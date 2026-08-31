@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WorkFlowHub.Domain.Entities;
 using WorkFlowHub.Infrastructure.Repositories;
@@ -6,6 +7,7 @@ namespace WorkFlowHub.Api.Controllers;
 
 [ApiController]
 [Route("api/projects")]
+[Authorize]
 public sealed class ProjectsController(ProjectRepository repository) : ControllerBase
 {
     [HttpGet]
