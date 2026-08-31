@@ -1,0 +1,10 @@
+# WorkFlowHub solution placeholder
+
+The production-style solution structure will be added incrementally:
+
+- `src/WorkFlowHub.Api` — ASP.NET Core Web API
+- `src/WorkFlowHub.Application` — use cases and business orchestration
+- `src/WorkFlowHub.Domain` — entities and domain rules
+- `src/WorkFlowHub.Infrastructure` — EF Core, SQL Server, persistence and external integrations
+- `tests/` — unit and integration tests
+- `frontend/` — Angular application
