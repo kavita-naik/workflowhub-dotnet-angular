@@ -18,6 +18,14 @@ builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<PasswordService>();
 builder.Services.AddScoped<JwtTokenService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Angular", policy => policy
+        .WithOrigins("http://localhost:4200", "https://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+});
+
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT key is not configured.");
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "WorkFlowHub";
 
@@ -46,6 +54,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("Angular");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
